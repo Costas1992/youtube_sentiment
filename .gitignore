@@ -8,6 +8,7 @@ venv/
 .env/
 env/
 .env
+*.egg-info/
 
 # Local data
 data/
@@ -15,6 +16,10 @@ data/
 
 # Model files (optional to ignore)
 models/
+*.h5
+*.keras
+*.pickle
+*.pkl
 
 # IDE settings
 .idea/

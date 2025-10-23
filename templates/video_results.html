@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Sentiment Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f9f9f9; padding:2rem; }
+    .result { background:white; padding:1rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    .comment { margin:0.5rem 0; padding:0.5rem; border-bottom:1px solid #eee; }
+    .positive { color:green; }
+    .negative { color:red; }
+  </style>
+</head>
+<body>
+  <div class="result">
+    {% if error %}
+      <h2 style="color:red;">{{ error }}</h2>
+    {% else %}
+      <h2>Video Analysis Results</h2>
+      <p><b>Video URL:</b> <a href="{{ result.video_url }}">{{ result.video_url }}</a></p>
+      <p>Positive: {{ result.positive }} | Negative: {{ result.negative }}</p>
+      <p>Average positivity: {{ result.avg_score }}%</p>
+
+      <h3>Sample Comments</h3>
+      {% for comment, sentiment in comments %}
+        <div class="comment {{ sentiment }}">
+          <b>{{ sentiment | capitalize }}</b>: {{ comment }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</body>
+</html>
